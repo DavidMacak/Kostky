@@ -8,13 +8,13 @@ namespace Kostky
 {
     public class Dices
     {
-        public class Dice
-        {
-            public int Number { get; set; }
-        }
+        //public class Dice
+        //{
+        //    public int Number { get; set; }
+        //}
 
         Random rint = new Random();
-        public List<Dice> diceList = new List<Dice>();
+        public List<int> diceList = new List<int>();
 
         public Dices()
         {
@@ -25,7 +25,7 @@ namespace Kostky
         {
             for (int i = 0; i < 6; i++)
             {
-                diceList.Add(new Dice());
+                diceList.Add(1);
             }
         }
 
@@ -35,10 +35,15 @@ namespace Kostky
         public void ThrowAllDices()
         {
             Console.WriteLine("Házím kostky...");
-            foreach(Dice dice in diceList)
+            for (int i = 0; i < 6; i++) 
             {
-                dice.Number = GetNumber();
+                diceList[i] = GetNumber();
             }
+
+            //foreach(int dice in diceList)
+            //{
+            //    dice = GetNumber();
+            //}
         }
 
         /// <summary>
@@ -46,10 +51,10 @@ namespace Kostky
         /// </summary>
         public void ThrowSomeDices()
         {
-            Console.WriteLine("Házím kostky...");
-            foreach (Dice dice in diceList)
+            BetterText.CyanText("Házím kostky...");
+            for (int i = 0; i < 6; i++)
             {
-                dice.Number = GetNumber();
+                diceList[i] = GetNumber();
             }
         }
 
@@ -57,17 +62,17 @@ namespace Kostky
         /// Throw specific dice
         /// </summary>
         /// <param name="diceOrder"></param>
-        public void ThrowDice(int diceOrder)
-        {
-            diceList[diceOrder].Number = GetNumber();
-        }
+        //public void ThrowDice(int diceOrder)
+        //{
+        //    diceList[diceOrder].Number = GetNumber();
+        //}
 
         public void ShowDiceValues()
         {
             int i = 1;
-            foreach (Dice dice in diceList)
+            foreach (int dice in diceList)
             {
-                Console.WriteLine($"{i++}. má hodnotu: {dice.Number}");
+                Console.WriteLine($"{i++}. kostka má hodnotu: {dice}");
             }
         }
 

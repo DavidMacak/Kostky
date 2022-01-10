@@ -10,38 +10,47 @@ namespace Kostky
     {
         Dices dices = new Dices();
         public List<bool> canDiceBeThrown = new List<bool>();
-
-        private bool is1inList = false;
-        private bool is2inList = false;
-        private bool is3inList = false;
-        private bool is4inList = false;
-        private bool is5inList = false;
-        private bool is6inList = false;
-
+        private List<int> howManyNumsThrown = new List<int>();
 
         public GameLogic()
         {
             CreateCanDiceBeThrownList();
+            CreateHowManyNumsThrown();
         }
 
 
-        public void StartRound(Player player)
+        public void StartRound(Player player, int roundsLeft)
         {
-            Console.WriteLine($"Právě hraje {player.Name} se skórem {player.Score} bodů.");
+            BetterText.GreenText($"Právě hraje {player.Name} se skórem {player.Score} bodů.");
             dices.ThrowAllDices();
             dices.ShowDiceValues();
             CheckDices();
+
         }
 
         public void CheckDices()
         {
-            is1inList = dices.diceList.Contains(1);
-            
+
+            for(int i = 0; i<6; i++)
+            {
+                howManyNumsThrown[i] = dices.diceList.FindAll(value => value.Equals(i + 1)).Count;
+            }
 
 
+            // DEBUG
+            for (int i = 0; i < 6; i++)
+            {
+               BetterText.CyanText($"Číslo {i+1} padlo {howManyNumsThrown[i]}x");
+            }
 
         }        
-        
+        private void CreateHowManyNumsThrown()
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                howManyNumsThrown.Add(0);
+            }
+        }
         private void CreateCanDiceBeThrownList()
         {
             for(int i = 0; i < 6; i++)

@@ -12,6 +12,7 @@ namespace Kostky
         GameLogic gl = new GameLogic();
         private int playersCount;
         private int maximumScore;
+        private int maxRounds = 3;
         private bool nextRound = true;
         private int winnerIndex;
 
@@ -26,15 +27,12 @@ namespace Kostky
 
         private void GameLoop()
         {
-            Console.WriteLine("Hra začíná!");
+            BetterText.CyanText("Hra začíná!");
             while (nextRound)
             {
                 foreach (Player player in players)
                 {
-                    //Console.WriteLine($"Právě hraje {player.Name} se skórem {player.Score} bodů.");
-                    //dices.ThrowAllDices();
-                    //dices.ShowDiceValues();
-                    gl.StartRound(player);
+                    gl.StartRound(player, maxRounds);
 
                     if(player.Score > maximumScore)
                     {
@@ -48,7 +46,7 @@ namespace Kostky
 
             //winnerIndex = GetWinner();
 
-            Console.WriteLine($"Winner is {players[winnerIndex].Name} with {players[winnerIndex].Score} score! Congrats!");
+            BetterText.GreenText($"Winner is {players[winnerIndex].Name} with {players[winnerIndex].Score} score! Congrats!");
         }
 
         //private int PlayerMaxScore()
