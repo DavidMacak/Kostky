@@ -8,6 +8,7 @@ namespace Kostky
 {
     class Game
     {
+
         private List<Player> players = new List<Player>();
         GameLogic gl = new GameLogic();
         private int playersCount;
@@ -15,6 +16,7 @@ namespace Kostky
         private int maxRounds = 3;
         private bool nextRound = true;
         private int winnerIndex;
+        private int highestScore;
 
 
         public void Start()
@@ -30,33 +32,28 @@ namespace Kostky
             BetterText.CyanText("Hra začíná!");
             while (nextRound)
             {
-                foreach (Player player in players)
+                for (int i = 0; i < players.Count; i++)
                 {
-                    gl.StartRound(player, maxRounds);
+                    gl.StartRound(players[i], maxRounds);
 
-                    if(player.Score > maximumScore)
+                    if(players[i].Score > highestScore)
                     {
-                        nextRound = false;
-                        break;
+                        highestScore = players[i].Score;
+                        winnerIndex = i;
                     }
+                    
+                }
+                if(highestScore >= maximumScore)
+                {
+                    nextRound = false;
+                    break;
+
                 }
 
             }
 
-
-            //winnerIndex = GetWinner();
-
-            BetterText.GreenText($"Winner is {players[winnerIndex].Name} with {players[winnerIndex].Score} score! Congrats!");
+            BetterText.GreenText($"Vítězem je {players[winnerIndex].Name} s {players[winnerIndex].Score} skóre! Gratuluji!");
         }
-
-        //private int PlayerMaxScore()
-        //{
-            
-
-        //    maxScore = players.Max(x => x.Score);
-
-        //    return maxScore;
-        //}
 
         private void SetMaximumScore()
         {

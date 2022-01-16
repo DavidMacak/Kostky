@@ -36,5 +36,11 @@ namespace Kostky
             Console.WriteLine(text);
             Reset();
         }
+        public static void MagentaText(string text)
+        {
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine(text);
+            Reset();
+        }
     }
 }

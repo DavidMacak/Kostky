@@ -8,11 +8,6 @@ namespace Kostky
 {
     public class Dices
     {
-        //public class Dice
-        //{
-        //    public int Number { get; set; }
-        //}
-
         Random rint = new Random();
         public List<int> diceList = new List<int>();
 
@@ -29,9 +24,6 @@ namespace Kostky
             }
         }
 
-        /// <summary>
-        /// Throws all dices
-        /// </summary>
         public void ThrowAllDices()
         {
             Console.WriteLine("Házím kostky...");
@@ -39,16 +31,8 @@ namespace Kostky
             {
                 diceList[i] = GetNumber();
             }
-
-            //foreach(int dice in diceList)
-            //{
-            //    dice = GetNumber();
-            //}
         }
 
-        /// <summary>
-        /// Throws x dices
-        /// </summary>
         public void ThrowSomeDices()
         {
             BetterText.CyanText("Házím kostky...");
@@ -58,22 +42,17 @@ namespace Kostky
             }
         }
 
-        /// <summary>
-        /// Throw specific dice
-        /// </summary>
-        /// <param name="diceOrder"></param>
-        //public void ThrowDice(int diceOrder)
         //{
         //    diceList[diceOrder].Number = GetNumber();
         //}
 
         public void ShowDiceValues()
         {
-            int i = 1;
             foreach (int dice in diceList)
             {
-                Console.WriteLine($"{i++}. kostka má hodnotu: {dice}");
+                Console.Write($"{dice} ");
             }
+            Console.WriteLine();
         }
 
         private int GetNumber()
