@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Kostky
 {
@@ -41,10 +38,6 @@ namespace Kostky
                 diceList[i] = GetNumber();
             }
         }
-
-        //{
-        //    diceList[diceOrder].Number = GetNumber();
-        //}
 
         public void ShowDiceValues()
         {

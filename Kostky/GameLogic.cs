@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Kostky
 {
@@ -68,10 +65,12 @@ namespace Kostky
             int triplets = 0;
             int pairs = 0;
             int postupka = 6;
+
             bool ones = false;
             bool fives = false;
             bool ignoreOnes = false;
             bool ignoreFives = false;
+            bool ignoreLastCheck = false;
 
             //List s počtem kolikrát se hodilo nějaké číslo
             for (int i = 0; i<6; i++)
@@ -125,6 +124,7 @@ namespace Kostky
                             ignoreFives = true;
                         }
                         roundScore += score;
+                        ignoreLastCheck = true;
                     }
 
                     if (triplets == 2)
@@ -180,7 +180,7 @@ namespace Kostky
                 BetterText.MagentaText("Pětka! +" + score);
                 roundScore += score;
             }
-            if(!ones && !fives)
+            if(!ones && !fives && !ignoreLastCheck)
             {
                 roundsLeft = 0;
             }
