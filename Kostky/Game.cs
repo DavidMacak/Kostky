@@ -24,7 +24,6 @@ namespace Kostky
             AddPlayers();
             SetMaximumScore();
             GameLoop();
-
         }
 
         private void GameLoop()
@@ -41,13 +40,12 @@ namespace Kostky
                         highestScore = players[i].Score;
                         winnerIndex = i;
                     }
-                    
                 }
+
                 if(highestScore >= maximumScore)
                 {
                     nextRound = false;
                     break;
-
                 }
 
             }
@@ -98,7 +96,5 @@ namespace Kostky
                 Console.WriteLine($"{player.Name} has {player.Score} score");
             }
         }
-
-
     }
 }

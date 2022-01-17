@@ -17,7 +17,5 @@ namespace Kostky
             get { return isWinner; }
             set { isWinner = false; }
         }
-
-
     }
 }

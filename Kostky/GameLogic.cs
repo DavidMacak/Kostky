@@ -21,7 +21,6 @@ namespace Kostky
             CreateHowManyNumsThrown();
         }
 
-
         public void StartRound(Player player, int maxRounds)
         {
             roundsLeft = maxRounds;
@@ -36,14 +35,12 @@ namespace Kostky
                 dices.ThrowAllDices();
                 dices.ShowDiceValues();
                 CheckDices();
-                
             }
 
             if (roundScore >= 350 && roundsLeft == 0)
             {
                 player.Score += roundScore;
             }
-
         }
 
         private void IgnoreOnesFives(bool ones, bool fives, int indexNumber)
@@ -82,12 +79,6 @@ namespace Kostky
                 howManyNumsThrown[i] = dices.diceList.FindAll(value => value.Equals(i + 1)).Count;
             }
 
-            //// DEBUG
-            //for (int i = 0; i < 6; i++)
-            //{
-            //    BetterText.CyanText($"Číslo {i + 1} padlo {howManyNumsThrown[i]}x");
-            //}
-
             for (int i = 0; i < 6; i++)
             {
                 if(howManyNumsThrown[i] == 6)
@@ -95,7 +86,6 @@ namespace Kostky
                     BetterText.MagentaText("6 stejných! +3000");
                     roundScore += 3000;
                     roundsLeft = 3;
-                    //IgnoreOnesFives(ignoreOnes, ignoreFives, i);
                     return;
                 }
 
@@ -155,11 +145,6 @@ namespace Kostky
                         BetterText.MagentaText("Dvojičky! +1500");
                         roundScore += 1500;
                         roundsLeft = 3;
-                        //for (int j = 0; j < 6; j++)
-                        //{
-                        //    ignoreOnes = IgnoreOnesFives(j, howManyNumsThrown[j]);
-                        //    ignoreFives = IgnoreOnesFives(j, howManyNumsThrown[j]);
-                        //}
                         return;
 
                     }
@@ -178,9 +163,7 @@ namespace Kostky
                         ignoreFives = true;
                         return;
                     }
-
                 }
-                
             }
 
             if (howManyNumsThrown[0] > 0 && howManyNumsThrown[0] <= 2 && !ignoreOnes)
@@ -197,7 +180,6 @@ namespace Kostky
                 BetterText.MagentaText("Pětka! +" + score);
                 roundScore += score;
             }
-
             if(!ones && !fives)
             {
                 roundsLeft = 0;
