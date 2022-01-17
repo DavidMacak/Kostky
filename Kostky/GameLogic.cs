@@ -93,6 +93,7 @@ namespace Kostky
                     BetterText.MagentaText("5 stejných! +2000");
                     roundScore += 2000;
                     IgnoreOnesFives(ignoreOnes, ignoreFives, i);
+                    ignoreLastCheck = true;
                     break;
                 }
 
@@ -101,6 +102,7 @@ namespace Kostky
                     BetterText.MagentaText("4 stejné! +1000");
                     roundScore += 1000;
                     IgnoreOnesFives(ignoreOnes, ignoreFives, i);
+                    ignoreLastCheck = true;
                     break;
                 }
 
