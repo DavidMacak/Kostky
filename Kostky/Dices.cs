@@ -21,29 +21,26 @@ namespace Kostky
             }
         }
 
-        public void ThrowAllDices()
+        public void ThrowDices(List<bool> canDiceBeThrown)
         {
             Console.WriteLine("Házím kostky...");
             for (int i = 0; i < 6; i++) 
             {
-                diceList[i] = GetNumber();
+                if (canDiceBeThrown[i])
+                {
+                    diceList[i] = GetNumber();
+                }
             }
         }
 
-        public void ThrowSomeDices()
+        public void ShowDiceValues(List<bool> canDiceBeThrown)
         {
-            BetterText.CyanText("Házím kostky...");
             for (int i = 0; i < 6; i++)
             {
-                diceList[i] = GetNumber();
-            }
-        }
-
-        public void ShowDiceValues()
-        {
-            foreach (int dice in diceList)
-            {
-                Console.Write($"{dice} ");
+                if (canDiceBeThrown[i])
+                {
+                    Console.Write($"{diceList[i]} ");
+                }
             }
             Console.WriteLine();
         }

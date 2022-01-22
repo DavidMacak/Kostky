@@ -14,6 +14,7 @@ namespace Kostky
         private bool nextRound = true;
         private int winnerIndex;
         private int highestScore;
+        private int rounds = 0;
 
 
         public void Start()
@@ -30,6 +31,9 @@ namespace Kostky
             {
                 for (int i = 0; i < players.Count; i++)
                 {
+                    rounds++;
+                    BetterText.RedText($"Kolo: {rounds}");
+
                     gl.StartRound(players[i], maxRounds);
 
                     if(players[i].Score > highestScore)

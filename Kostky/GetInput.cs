@@ -63,5 +63,26 @@ namespace Kostky
 
             return output;
         }
+
+        public static bool IsEmpty()
+        {
+            string input;
+            bool output;
+                
+            input = Console.ReadLine();
+
+            if (String.IsNullOrWhiteSpace(input) && String.IsNullOrEmpty(input))
+            {
+                output = true;
+            }
+            else
+            {
+                output = false;
+            }
+
+
+            return output;
+
+        } 
     }
 }
